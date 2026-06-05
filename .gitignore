@@ -1,0 +1,22 @@
+@"
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Config nhạy cảm
+appsettings.Development.json
+appsettings.json
+
+# Packages
+packages/
+*.nupkg
+
+# Logs
+*.log
+logs/
+"@ | Out-File .gitignore -Encoding utf8
