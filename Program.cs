@@ -15,8 +15,6 @@ namespace FlashcardAPI
 
             var mongoClient = new MongoClient(connectionString);
             builder.Services.AddSingleton<IMongoClient>(mongoClient);
-
-            // 🔑 ĐÂY CHÍNH LÀ CHÌA KHÓA: Đăng ký IMongoDatabase để gỡ lỗi sập hệ thống
             builder.Services.AddScoped<IMongoDatabase>(sp => mongoClient.GetDatabase(databaseName));
             //add mongo
             builder.Services.AddSingleton<IMongoClient>(s =>
@@ -32,7 +30,6 @@ namespace FlashcardAPI
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -42,10 +39,7 @@ namespace FlashcardAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }
